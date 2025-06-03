@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV de [Tu Nombre]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Montserrat:wght@404;600;700&display=swap" rel="stylesheet">
+    <style>
+        /*
+        Paleta de Colores Profesional:
+        --color-primary: #3498db;   // Azul vibrante
+        --color-secondary: #e74c3c; // Rojo acento (para elementos importantes)
+        --color-text-dark: #333;    // Gris oscuro para el texto principal
+        --color-text-light: #777;   // Gris claro para texto secundario
+        --color-background: #f4f4f4; // Fondo general
+        --color-card-bg: #fff;      // Fondo de tarjetas o secciones
+        --color-accent: #f39c12;    // Naranja (para detalles o íconos)
+        */
+
+        :root {
+            --color-primary: #3498db;
+            --color-secondary: #e74c3c;
+            --color-text-dark: #333;
+            --color-text-light: #555; /* Ligeramente más oscuro para mejor legibilidad */
+            --color-background: #f4f4f4;
+            --color-card-bg: #fff;
+            --color-accent: #f39c12;
+            --border-radius: 8px;
+            --transition-speed: 0.3s ease;
+        }
+
+        /* Diseño Responsivo: Mobile-First */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-background);
+            color: var(--color-text-dark);
+            font-size: 16px;
+        }
+
+        /* Contenedor principal para centrar el contenido */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: var(--color-card-bg);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            overflow: hidden; /* Para manejar floats si los hubiera, aunque Flexbox los reduce */
+        }
+
+        /* Encabezados */
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-primary);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            color: var(--color-text-dark);
+            border-bottom: 3px solid var(--color-primary);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.3em;
+            color: var(--color-accent);
+            margin-bottom: 5px;
+        }
+
+        /* Información de contacto */
+        .contact-info {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 0.95em;
+            color: var(--color-text-light);
+        }
+        .contact-info a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+        .contact-info a:hover {
+            color: var(--color-accent);
+        }
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        /* Sección general */
+        .section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background-color: var(--color-background); /* Fondo sutil para las secciones */
+            border-radius: var(--border-radius);
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Listas no ordenadas (para habilidades, logros, etc.) */
+        ul {
+            list-style: none; /* Eliminar viñetas predeterminadas */
+            padding: 0;
+            margin: 0;
+        }
+        ul li {
+            margin-bottom: 8px;
+            padding-left: 25px; /* Espacio para la viñeta personalizada */
+            position: relative; /* Para posicionar la viñeta personalizada */
+            color: var(--color-text-dark);
+        }
+        ul li::before {
+            content: '•'; /* Viñeta personalizada */
+            color: var(--color-accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* Elementos de experiencia y educación */
+        .experience-item, .education-item, .project-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            background-color: var(--color-card-bg);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+        }
+
+        .experience-item:hover, .education-item:hover, .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-item h3, .education-item h3, .project-item h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: var(--color-primary);
+        }
+
+        .experience-item p, .education-item p, .project-item p {
+            margin: 0 0 10px 0;
+            color: var(--color-text-light);
+            font-size: 0.9em;
+        }
+
+        .experience-item ul, .project-item ul {
+            margin-top: 10px;
+        }
+
+        /* Habilidades (usando Flexbox para una presentación ordenada) */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Espacio entre los elementos */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .skills-list li {
+            background-color: var(--color-primary);
+            color: var(--color-card-bg);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: background-color var(--transition-speed), transform var(--transition-speed);
+        }
+        .skills-list li:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-3px);
+        }
+        .skills-list li::before {
+            content: ''; /* Eliminar viñeta personalizada de los items de habilidad */
+        }
+
+        /* Enlaces dentro de secciones (proyectos) */
+        .project-item a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color var(--transition-speed);
+        }
+        .project-item a:hover {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+
+        /* Footer (si lo agregas) */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: var(--color-text-light);
+            font-size: 0.85em;
+        }
+
+        /* Medias Queries para Diseño Responsivo */
+
+        /* Tablets y escritorios pequeños */
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 2.8em;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            .container {
+                padding: 40px;
+            }
+            .section {
+                padding: 20px;
+            }
+            /* Ejemplo de Flexbox para una disposición en dos columnas en pantallas más grandes */
+            .main-content {
+                display: flex;
+                flex-wrap: wrap; /* Permite que los elementos salten de línea si no caben */
+                gap: 30px; /* Espacio entre las columnas */
+            }
+            .left-column, .right-column {
+                flex: 1; /* Permite que las columnas crezcan y ocupen el espacio disponible */
+                min-width: 300px; /* Ancho mínimo para evitar que se aplasten demasiado */
+            }
+
+            /* Si quisieras una barra lateral, usarías esto: */
+            /*
+            .cv-layout {
+                display: grid;
+                grid-template-columns: 1fr 3fr; // Una columna más pequeña a la izquierda, una más grande a la derecha
+                gap: 30px;
+            }
+            .sidebar {
+                // Estilos para la barra lateral (ej. Habilidades, Idiomas, Contacto)
+            }
+            .main-sections {
+                // Estilos para las secciones principales (Experiencia, Educación, Proyectos)
+            }
+            */
+        }
+
+        /* Escritorios grandes */
+        @media (min-width: 1024px) {
+            h1 {
+                font-size: 3.2em;
+            }
+            h2 {
+                font-size: 2.2em;
+            }
+            .container {
+                margin: 40px auto;
+                padding: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="contact-info">
+                <h1>Brayan Palma Aboyts</h1>
+                <p>Email: <a href="mailto:tunombre@email.com">brayan.palma@nadglobal.com</a></p>
+                <p>Teléfono: +52 4151031863</p>
+                <p>Ubicación: San Miguel de Allende, Gto</p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/brayanaboytes" target="_blank">linkedin.com/in/brayanaboytes</a></p>
+                <p>Portafolio/GitHub: <a href="https://www.tuportafolio.com" target="_blank">tacodetripa.com</a></p>
+            </div>
+        </header>
+
+        <main>
+            <section class="section" aria-labelledby="resumen-heading">
+                <h2 id="resumen-heading">Resumen Profesional</h2>
+                <p>Soy un tecnico en desarrollo de software multiplataforma, actualmente desarrollador en la empresa de NAD GLOBAL en el area de soporte. Apasionado/a por el aprendizaje continuo y la colaboración en equipos multidisciplinarios. Busco un puesto desafiante donde pueda aplicar mis habilidades para contribuir significativamente al éxito de la empresa.</p>
+            </section>
+
+            <section class="section" aria-labelledby="experiencia-heading">
+                <h2 id="experiencia-heading">Experiencia Laboral</h2>
+                <div class="experience-item">
+                    <h3>DESARROLLADOR - NAD GLOBAL S.A de C.V.</h3>
+                    <p><strong>25 febrero 2025 – Actualmente</strong> | Santiago de Queretaro, Queretaro</p>
+                    <ul>
+                        <li>Desarrollé y mantuve modulos de consulta de información utilizando C#, JS, JQuery, CSS, resultando en una optimización a la hora de consultar los números de parte, los tiempos de respuesta se reducieron a la hora de querer consultar la información.</li>
+                        <li>Colaboré activamente en equipos de diseño y backend para implementar nuevas funcionalidades, entregando proyectos a tiempo y dentro del presupuesto.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="educacion-heading">
+                <h2 id="educacion-heading">Educación</h2>
+                <div class="education-item">
+                    <h3>Tecnico Superior Universitario - UNIVERSIDAD TECNOLOGICA DEL NORTE DE GUANAJUATO</h3>
+                    <p><strong>2022 – 2024</strong> | Dolores Hidalgo Cuna de la Independencia, Gto</p>
+                    <ul>
+                        <li></li>
+                        <li>Proyecto final: Proyecto Maestro de Partes en NAD GLOBAL</li>
+                    </ul>
+                </div>
+                <div class="education-item">
+                    <h3>Tecnico - Centro de Bachillerato Tecnologico Industrial y de Servicios.</h3>
+                    <p><strong>2019 – 2022</strong> | San Miguel de Allende, Gto.</p>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="habilidades-heading">
+                <h2 id="habilidades-heading">Habilidades</h2>
+                <ul class="skills-list">
+                    <li>JavaScript</li>
+                    <li>Python</li>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>SQL</li>
+                    <li>Git</li>
+                    <li>Docker</li>
+                    <li>Metodologías Ágiles</li>
+                    <li>Comunicación</li>
+                    <li>Resolución de Problemas</li>
+                    <li>Trabajo en Equipo</li>
+                </ul>
+            </section>
+
+            <section class="section" aria-labelledby="proyectos-heading">
+                <h2 id="proyectos-heading">Proyectos Destacados (Opcional)</h2>
+                <div class="project-item">
+                    <h3>Maestro de Partes</h3>
+                    <p><strong>Tecnologías:</strong> C#, JS, JQuery</p>
+                    <p>Breve descripción: Desarrollé una aplicación web que permite a los usuarios consultar de manera rapida y eficiente la informacion de base de datos. Implementé un handler, filtrado de 10 en 10, para reducir el tiempo de demora al consultar la información.</p>
+                </div>
+            </section>
+
+            <section class="section" aria-labelledby="idiomas-heading">
+                <h2 id="idiomas-heading">Idiomas</h2>
+                <ul>
+                    <li>Español: Nativo</li>
+                    <li>Inglés: Fluido (A2)</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Brayan Palma Aboytes. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
